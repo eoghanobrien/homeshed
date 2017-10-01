@@ -2,6 +2,7 @@
     "name": "eoghanobrien/homeshed",
     "description": "The CLI toolshed for Laravel Homestead",
     "type": "project",
+    "license": "BSD-3-Clause",
     "require": {
         "php": ">=7.0.0",
         "symfony/console": "^3.3",
