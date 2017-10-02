@@ -2,6 +2,7 @@
 
 A small CLI application for updating your [Laravel Homestead](https://laravel.com/docs/5.5/homestead) configuration file, allows you to quickly update your Homestead.yaml file using simple commands. The tool is especially useful for creating development shortcuts and workflows.
 
+> **Note** The tool has not yet been fully tested on Windows!
 
 # Requirements
 
@@ -19,6 +20,18 @@ As of now, you must install the tool as a global composer package:
 ```sh
 composer global require "eoghanobrien/homeshed" dev-master
 ```
+
+In your home directory, create a `.homeshed.json` file with the following structure:
+
+```json
+{
+  "homestead": {
+    "path": "/path/to/my/Homestead"
+  }
+}
+```
+
+If you installed `Homestead` into a non-standard location, make sure to add your custom path here without the `Homestead.yaml` file suffixed.
 
 # Commands
 
