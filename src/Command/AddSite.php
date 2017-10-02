@@ -18,7 +18,7 @@ class AddSite extends BaseCommand
              ->setDescription('Add a new site to your Homestead configuration.');
 
         $this->addArgument('site', InputArgument::REQUIRED, 'The site name url. (e.g. example.app');
-        $this->addArgument('path', InputArgument::REQUIRED, 'The site path folder. (e.g. /home/vagrant/Code)');
+        $this->addArgument('path', InputArgument::REQUIRED, 'The site path folder. (e.g. /home/vagrant/Code/example/public)');
 
         $this->addOption('type', 't', InputOption::VALUE_OPTIONAL, 'The type of site (e.g. laravel, symfony4, etc)', 'laravel');
         $this->addOption('cron', 'c', InputOption::VALUE_NONE, 'Enable cron schedule for this site.');
@@ -35,19 +35,14 @@ class AddSite extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $name = $input->getArgument('site');
-        $path = $input->getArgument('path');
-
-        $name = filter_var($name, FILTER_SANITIZE_URL);
-        $path = (empty($path)) ? $name : str_replace('/', '/', $path);
+        $name = filter_var($input->getArgument('site'), FILTER_SANITIZE_URL);
+        $path = (empty($path = $input->getArgument('path'))) ? $name : str_replace('/', '/', $path);
 
         $type = strtolower($input->getOption('type'));
         $cron = (bool) $input->getOption('cron');
-        $vars = (array) $input->getOption('params');
-
         $vars = array_map(function ($var) {
             return array_combine(['key', 'value'], explode(':', $var));
-        }, $vars);
+        }, (array) $input->getOption('params'));
 
         try {
             $site = $this->settings()->updateSite($name, $path, [

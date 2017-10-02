@@ -8,7 +8,7 @@ use Symfony\Component\Console\Application as ConsoleApplication;
 class Application extends ConsoleApplication
 {
     /**
-     * The path the installer configuration file.
+     * The path to the installer configuration file.
      * @var string
      */
     protected $configPath;
@@ -16,6 +16,7 @@ class Application extends ConsoleApplication
     /**
      * Construct a new Ignite Installer console application.
      *
+     * @return void
      */
     public function __construct()
     {
@@ -25,7 +26,7 @@ class Application extends ConsoleApplication
     }
 
     /**
-     * Get the configuration path.
+     * Get the path to the user configuration file.
      *
      * @return string
      * @throws \Exception
