@@ -36,7 +36,7 @@ class AddSite extends BaseCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $name = filter_var($input->getArgument('site'), FILTER_SANITIZE_URL);
-        $path = (empty($path = $input->getArgument('path'))) ? $name : str_replace('/', '/', $path);
+        $path = (empty($path = $input->getArgument('path'))) ? $name : str_replace('\\', '/', $path);
 
         $type = strtolower($input->getOption('type'));
         $cron = (bool) $input->getOption('cron');
