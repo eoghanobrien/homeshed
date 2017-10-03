@@ -2,7 +2,7 @@
 
 A small CLI application for updating your [Laravel Homestead](https://laravel.com/docs/5.5/homestead) configuration file, allows you to quickly update your Homestead.yaml file using simple commands. The tool is especially useful for creating development shortcuts and workflows.
 
-> **Note** The tool has not yet been fully tested on Windows!
+> **Note:** The tool has not yet been fully tested on Windows!
 
 # Requirements
 
@@ -11,7 +11,6 @@ On your local (non homestead) machine, you need the following:
 - Git
 - PHP
 - Composer
-
 
 # Installation
 
